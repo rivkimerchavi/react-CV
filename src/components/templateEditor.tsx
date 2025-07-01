@@ -656,7 +656,7 @@ const loadTemplateCSS = async () => {
       }
     };
 
-  } catch (error) {
+  } catch (error: any) {
     if (isMounted) {
       console.error('❌ שגיאה כללית בטעינת CSS:', error);
       
@@ -679,7 +679,7 @@ const loadTemplateCSS = async () => {
 };
 
 // 🧪 פונקציה לבדיקה ידנית בקונסול
-window.debugTemplate = async (templateName) => {
+(window as any).debugTemplate = async (templateName: string) => {
   try {
     const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
     
@@ -2070,14 +2070,14 @@ window.debugTemplate = async (templateName) => {
               }}
               onMouseEnter={(e) => {
                 if (emailLoading !== 'sending') {
-                  e.target.style.background = '#ff7700';
-                  e.target.style.transform = 'translateY(-1px)';
+                  (e.target as HTMLButtonElement).style.background = '#ff7700';
+                  (e.target as HTMLButtonElement).style.transform = 'translateY(-1px)';
                 }
               }}
               onMouseLeave={(e) => {
                 if (emailLoading !== 'sending') {
-                  e.target.style.background = '#ff8c00';
-                  e.target.style.transform = 'translateY(0)';
+                  (e.target as HTMLButtonElement).style.background = '#ff8c00';
+                  (e.target as HTMLButtonElement).style.transform = 'translateY(0)';
                 }
               }}
             >
